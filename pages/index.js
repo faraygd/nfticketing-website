@@ -1,6 +1,11 @@
+import { useMetamask, useAddress, useContract } from '@thirdweb-dev/react'
 import Head from 'next/head'
-
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 export default function Home() {
+    const address = useAddress();
+    const metamaskWallet = useMetamask();
+    const contract = useContract(process.env.CONTRACT_ADDRESS, 'edition-drop');
   return (
     <>
       <Head>
@@ -9,8 +14,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="App">
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <main className="min-h-screen bg-black">
+        <Navbar/>
+        <Hero />
       </main>
     </>
   );
